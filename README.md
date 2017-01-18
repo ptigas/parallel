@@ -1,7 +1,20 @@
 # parallel
+
+What is parallel?
+---
+
 Parallel is a hands-on essay aiming to address the social psychology of possessions in digital economies and to challenge our perception of property.
 
 ![](http://denmyl.com/wp-content/uploads/2015/02/Parallel-800px.jpg)
+
+
+Parallel Contract
+---
+
+Earth is broken down to hexagons. Each hexagon is uniquely identified by an id. Ownership of virtual land means, owning the id in the database.
+
+Statement
+---
 
 Drawing from the virtual economies that have emerged during the last few years (e.g. the Linden economy in Second Life), it investigates the effect of virtual worlds on our perception of complex societal systems. By introducing the idea of a parallel world where there’s a chance for anyone to prosper, Parallel creates a post-scarcity narrative that stands between reality and conceptuality, to which hypothesis the general public is invited to respond; Parallel takes the form of an online platform that allows users to virtually appropriate the representation of real world assets, such as house and land property or pretty much anything that has exchange value in real life and an online presence. The online platform is a “reset button”, a playground to regulate and rearrange real life property in any way users consider as efficient for a functional cohabitation, as well as a platform to exercise post-scarcity. However, the actual purpose of the project is to record potential responses to the existence of such a platform. The platform becomes a mediator to discuss the complex nature of ethics in economics and to investigate whether the already existing capitalist context is eventually transferred to virtual domains, disrupting the perception of our most idealistic self.
  
@@ -22,4 +35,3 @@ Keynes, J. (2008). Economic Possibilities for our Grandchildren (1930). In Pecch
 Rawls, J. (1971). A theory of justice. 1st ed. Cambridge, Mass.: Belknap Press of Harvard University Press.
 
 Sandel, M. (1984). The Procedural Republic and the Unencumbered Self. Political Theory, 12(1), pp.81-96.
-
