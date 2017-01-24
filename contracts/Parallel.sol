@@ -2,27 +2,27 @@ pragma solidity ^0.4.2;
 
 contract Parallel {
     address creator;
+    
     struct Land {
         address owner;
         uint price;
     }
     
-    mapping (string => Land) public land;
-    event TileUpdated(uint location);
+    mapping (bytes8 => Land) public land;
+    event LandUpdated(bytes8 location);
 
     // Original Land Owner
-    function PixelMap() {creator = msg.sender;}
+    function Parallel() {creator = msg.sender;}
 
     // Get Land information at X,Y position.
-    function getLand(string location) returns (address, uint) {
-        return (land[location].owner,
-                land[location].price);
+    function getLand(bytes8 location) returns (address, uint) {
+        return (land[location].owner, land[location].price);
     }
 
     // Claim unclaimed earth for free
-    function claimLand(string location) payable {
+    function claimLand(bytes8 location) payable {        
+        if (location[7] != 0x0 && location[6] != 0x0 ) {throw;}
         
-        if (location.length != 6) {throw;}
         uint price = land[location].price;
         address owner;
 
@@ -38,6 +38,7 @@ contract Parallel {
             land[location].price = 0; // Set Price to 0.
             LandUpdated(location);
         } else {
+            throw;
             owner = land[location].owner;
 
             // If the tile isn't for sale, don't sell it!
@@ -59,7 +60,7 @@ contract Parallel {
     }
 
     // Set an already owned Land to whatever you'd like.
-    function setLand(string location, uint price) {
+    function setLand(bytes8 location, uint price) {
         if (land[location].owner != msg.sender) {throw;} // Land not owned by you!
         else {
             land[location].price = price;
