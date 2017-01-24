@@ -19,7 +19,7 @@ contract Parallel {
                 land[location].price);
     }
 
-    // Purchase an unclaimed Land for 2 Eth.
+    // Claim unclaimed earth for free
     function claimLand(string location) payable {
         
         if (location.length != 6) {throw;}
@@ -60,7 +60,7 @@ contract Parallel {
 
     // Set an already owned Land to whatever you'd like.
     function setLand(string location, uint price) {
-        if (land[location].owner != msg.sender) {throw;} // Pixel not owned by you!
+        if (land[location].owner != msg.sender) {throw;} // Land not owned by you!
         else {
             land[location].price = price;
             LandUpdated(location);
