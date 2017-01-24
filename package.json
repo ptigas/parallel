@@ -13,6 +13,7 @@
   },
   "devDependencies": {},
   "scripts": {
+    "testrpc": "testrpc",
     "test": "truffle test"
   },
   "repository": {
