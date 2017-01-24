@@ -1,0 +1,28 @@
+{
+  "name": "parallel",
+  "version": "1.0.0",
+  "description": "What is parallel? ---",
+  "main": "truffle.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "ethereumjs-testrpc": "^3.0.3",
+    "latlon-geohash": "^1.1.0",
+    "truffle": "^2.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "truffle test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ptigas/parallel.git"
+  },
+  "author": "Panagiotis Tigas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ptigas/parallel/issues"
+  },
+  "homepage": "https://github.com/ptigas/parallel#readme"
+}
