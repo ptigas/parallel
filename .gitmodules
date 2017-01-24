@@ -1,0 +1,3 @@
+[submodule "latlon-geohash"]
+	path = latlon-geohash
+	url = git@github.com:chrisveness/latlon-geohash.git
