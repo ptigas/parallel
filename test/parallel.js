@@ -8,6 +8,22 @@ contract('Parallel', function(accounts) {
     });
   });
 
+  it("check hashes", function() {
+    var parallel = Parallel.deployed();
+    return parallel.claimLand("asdfghj").then(function() {
+      return parallel.claimLand("qwertyu").then(function() {
+        return parallel.getHashes.call().then(function(hashes) {
+          return parallel.toBytes7.call("asdfghj").then(function(a) {
+            return parallel.toBytes7.call("qwertyu").then(function(b) {
+              assert.equal(a, hashes[0]);
+              assert.equal(b, hashes[1]);
+            });
+          });
+        });
+      });
+    });
+  });
+
   it("claim some land", function() {
     var parallel = Parallel.deployed();
 
