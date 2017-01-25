@@ -19,10 +19,20 @@ contract Parallel {
         return (land[location].owner, land[location].price);
     }
 
+    function toBytes7(bytes data) returns (bytes8) {
+        uint64 subdata = 0;
+        for (uint64 i = 0; i < 7; i++) {
+            subdata += uint64(data[i]) * 2 ** (8 * (7 - 1 - i));
+        }
+        return bytes8(subdata);
+    }
+
     // Claim unclaimed earth for free
-    function claimLand(bytes8 location) payable {        
-        if (location[7] != 0x0 && location[6] != 0x0 ) {throw;}
+    function claimLand(bytes loc) payable {        
+        if (loc.length != 7) {throw;}
         
+        bytes8 location = toBytes7(loc);
+
         uint price = land[location].price;
         address owner;
 
