@@ -20,4 +20,5 @@ before_install:
 
 install:
   - npm install
-  - npm run testrpc
+
+script: npm run testrpc & (sleep 5; npm run migrate; npm run test; killall npm)
