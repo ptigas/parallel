@@ -21,4 +21,4 @@ before_install:
 install:
   - npm install
 
-script: npm run compile && (npm run testrpc & ((sleep 5; npm run migrate && npm run test) ; killall npm))
+script: npm run compile && (npm run testrpc >> _testrpc_logs & ((sleep 5; npm run migrate && npm run test) ; killall npm ; echo -----TESTRPC LOGS-----; cat _testrpc_logs))
