@@ -7,7 +7,7 @@ contract Parallel {
         address owner;
         uint price;
     }
-    
+    int sh = 8;
     mapping (bytes8 => Land) public land;
     bytes8[] geohashes;
     event LandUpdated(bytes8 location);
@@ -19,7 +19,7 @@ contract Parallel {
     function getLand(bytes8 loc) returns (address, uint) {
         bytes8 location = loc;
         if (location[7] == 0x0) {
-            location = (location >> int(8));
+            location = (location >> sh);
         }
         return (land[location].owner, land[location].price);
     }
@@ -35,8 +35,9 @@ contract Parallel {
     // Claim unclaimed earth for free
     function claimLand(bytes8 loc) payable {        
         bytes8 location = loc;
+        
         if (location[7] == 0x0) {
-            location = (location >> int(8));
+            location = (location >> sh);
         }
 
         uint price = land[location].price;
