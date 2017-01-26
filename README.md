@@ -1,9 +1,11 @@
-# parallel
+# Parallel
+
+[![Build Status](https://travis-ci.org/ptigas/parallel.svg?branch=master)](https://travis-ci.org/ptigas/parallel)
 
 What is parallel?
 ---
 
-Parallel is a hands-on essay aiming to address the social psychology of possessions in digital economies and to challenge our perception of property.
+Parallel is a social experiment aiming to address the social psychology of possessions in digital economies and to challenge our perception of property.
 
 ![](http://denmyl.com/wp-content/uploads/2015/02/Parallel-800px.jpg)
 
@@ -11,8 +13,19 @@ Parallel is a hands-on essay aiming to address the social psychology of possessi
 Parallel Contract
 ---
 
-Earth is broken down to hexagons. Each hexagon is uniquely identified by an id. Ownership of virtual land means, owning the id in the database.
-
+Contract is is written in Solidity to run on the Ethereum blockchain. Land is broken down using geohashing. Unclaimed land (geohashes) are free to be claimed.
+```
+// If Unowned, claim it for free.
+owner = land[location].owner;
+if (land[location].owner == 0x0) {
+    land[location].owner = msg.sender;
+    land[location].price = 0; // Set Price to 0.
+    geohashes.push(location);
+    LandUpdated(location);
+} else {
+    throw;
+}
+```
 Statement
 ---
 
