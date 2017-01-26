@@ -14,7 +14,10 @@
   "devDependencies": {},
   "scripts": {
     "testrpc": "testrpc",
-    "test": "truffle test"
+    "test": "truffle test",
+    "serve": "truffle serve",
+    "migrate": "truffle migrate",
+    "compile": "truffle compile"
   },
   "repository": {
     "type": "git",
