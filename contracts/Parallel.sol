@@ -19,7 +19,7 @@ contract Parallel {
     function getLand(bytes8 loc) returns (address, uint) {
         bytes8 location = loc;
         if (location[7] == 0x0) {
-            location = (location >> 8);
+            location = (location >> int(8));
         }
         return (land[location].owner, land[location].price);
     }
@@ -36,7 +36,7 @@ contract Parallel {
     function claimLand(bytes8 loc) payable {        
         bytes8 location = loc;
         if (location[7] == 0x0) {
-            location = (location >> 8);
+            location = (location >> int(8));
         }
 
         uint price = land[location].price;
