@@ -1,4 +1,4 @@
-pragma solidity ^0.4.2;
+pragma solidity ^0.4.8;
 
 contract Parallel {
     address creator;
@@ -7,7 +7,7 @@ contract Parallel {
         address owner;
         uint price;
     }
-    int sh = 8;
+
     mapping (bytes8 => Land) public land;
     bytes8[] geohashes;
     event LandUpdated(bytes8 location);
@@ -15,30 +15,27 @@ contract Parallel {
     // Original Land Owner
     function Parallel() {creator = msg.sender;}
 
+    function toBytes7(bytes8 data) returns (bytes8) {        
+        assembly {
+            data := div(data, 256)
+        }     
+        return data;
+    }
+
     // Get Land information at X,Y position.
     function getLand(bytes8 loc) returns (address, uint) {
-        bytes8 location = loc;
-        if (location[7] == 0x0) {
-            location = (location >> sh);
-        }
+        bytes8 location = toBytes7(loc);
+        
         return (land[location].owner, land[location].price);
     }
     
     function getHashes() returns (bytes8[]) {
         return geohashes;
-    }
-
-    function toBytes7(bytes8 data) returns (bytes8) {        
-        return data >> 8;
-    }
+    } 
 
     // Claim unclaimed earth for free
     function claimLand(bytes8 loc) payable {        
-        bytes8 location = loc;
-        
-        if (location[7] == 0x0) {
-            location = (location >> sh);
-        }
+        bytes8 location = toBytes7(loc);
 
         uint price = land[location].price;
         address owner;
