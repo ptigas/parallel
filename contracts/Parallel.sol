@@ -15,11 +15,20 @@ contract Parallel {
     // Original Land Owner
     function Parallel() {creator = msg.sender;}
 
-    function toBytes7(bytes8 data) returns (bytes8) {        
-        assembly {
-            data := div(data, 256)
-        }     
-        return data;
+    function validate(bytes8 data) {
+        if (data[7] != 0x0) {
+            throw;
+        }
+
+        for(uint i=0; i<7; ++i) {
+            if (!((data[i] >= 0x30 && data[i] <= 0x39) || (data[i] >= 0x61 && data[i] <= 0x7a))) {
+                throw;
+            }
+        }
+    }
+
+    function toBytes7(bytes8 data) returns (bytes8) {                
+        return data & 0xFFFFFFFFFFFFFF00;
     }
 
     // Get Land information at X,Y position.
@@ -34,7 +43,8 @@ contract Parallel {
     } 
 
     // Claim unclaimed earth for free
-    function claimLand(bytes8 loc) payable {        
+    function claimLand(bytes8 loc) payable {      
+        validate(loc);  
         bytes8 location = toBytes7(loc);
 
         uint price = land[location].price;
